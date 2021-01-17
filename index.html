@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+ <!-- Required meta tags -->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- Bootstrap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+ <title>Vue Weather App</title>
+</head>
+
+<body>
+ <div id="myapp" class="col-md-6" style="margin: 0 auto;padding: 1rem;">
+ <h1 style="text-align: center;">Vue Weather App</h1>
+ 
+ <form @submit.prevent="fetchWeather">
+  <div class="form-group">
+   <input list="cities" class="form-control" v-model="searchquery">
+   <datalist id="cities">
+    <option v-for="city in cities">{{city}}</option>
+   </datalist>
+   <input type="submit" value="Get Weather" class="btn btn-primary" style="display: block;margin: 1rem auto;">
+  </div>
+ </form>
+ 
+ <ul class="list-group" v-if="result">
+
+   <h1> {{response.main.temp}} <b>&deg;C</b>
+   		
+	</h1> 
+	<div style = "position:fixed; left:400px; top:300px;">
+         <b>Min:</b> 
+		 {{response.main.temp_min}} &deg;C
+		 
+      </div>
+	  <div style = "position:fixed; left:500px; top:300px;">
+         <b>Max:</b> 
+		 {{response.main.temp_max}} &deg;C
+		 
+      </div>
+	<div style = "position:fixed; left:400px; top:500px;">
+         <b>Pressure</b> <br>
+		 {{response.main.pressure}} hpa
+		 
+      </div>
+	<div style = "position:fixed; left:900px; top:500px;">
+         <b>Humidity</b> <br>
+		 {{response.main.humidity}} %
+      </div>
+	  <div style = "position:fixed; left:400px; top:600px;">
+         <b>Sunrise</b> <br>
+		  {{response.sys.sunrise}} am
+      </div>
+	<div style = "position:fixed; left:900px; top:600px;">
+         <b>Sunset</b> <br>
+         {{response.sys.sunset}} pm
+      </div>
+</ul>
+    </div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+ </script>
+ <script src="https://unpkg.com/vue@next"></script>
+ <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ <script src="index.js"></script>
+
+</body>
+
+</html>

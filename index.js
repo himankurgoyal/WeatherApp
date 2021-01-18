@@ -4463,7 +4463,7 @@ const myappcomponent = {
  },
  methods: {
 	 async fetchWeather(){
-			let query = `http://api.openweathermap.org/data/2.5/weather?q=${this.searchquery}&appid=c92a9df0a637e13ab77b28d98a2a7c3b&units=metric`
+			let query = `https://api.openweathermap.org/data/2.5/weather?q=${this.searchquery}&appid=c92a9df0a637e13ab77b28d98a2a7c3b&units=metric`
 			await axios.get(query)
 			.then((response)=>{
 				this.response = response.data
